@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADHU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="grok-bg.css">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <!-- JavaScript -->
+    <script src="app.js" defer></script>
+    <script src="grok-bg.js" defer></script>
+</head>
+<body data-color-scheme="black" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
+    <!-- Header -->
+        <header class="header" data-header>
+            <div class="container" style="max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; font-size: 1rem; padding: 0 32px; box-sizing: border-box;">
+                <h1 class="h1 logo" style="margin: 0;">
+                    <a href="#home" class="brand-link">MADHU<span style="color:#3b82f6;">.</span></a>
+                </h1>
+                <nav class="navbar" id="mobileNavOverlay" style="flex: 1;">
+                    <ul class="navbar-list" style="display: flex; gap: 32px; list-style: none; padding: 0; margin: 0; justify-content: center; align-items: center;">
+                        <li><a href="#home" class="navbar-link active">Home</a></li>
+                        <li><a href="#about" class="navbar-link">About</a></li>
+                        <li><a href="#skills" class="navbar-link">Skills</a></li>
+                        <li><a href="#projects" class="navbar-link">Projects</a></li>
+                        <li><a href="#contact" class="navbar-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="navbar-actions" style="margin-left: 32px;">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+            </div>
+            </div>
+        </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hi, I'm MADHU</h1>
+            <p class="hero-subtitle">Software Engineer</p>
+            <p class="hero-description">
+                Passionate about building robust and scalable applications that solve real-world problems. 
+                 I specialize in full-stack development with a focus on modern technologies and best practices.
+            </p>
+            
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn--primary">
+                    <i class="fas fa-code"></i>
+                    View My Work
+                </a>
+                <a href="#contact" class="btn btn--outline">
+                    <i class="fas fa-envelope"></i>
+                    Get In Touch
+                </a>
+                
+            </div>   
+        </div>
+        <div class="hero-image">
+            <div class="profile-image-circle">
+                <img src="./madhu_sv.jpeg" alt="MADHU" class="profile-img">
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-header">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                Learn more about my journey, experience, and what drives me as a software engineer.
+            </p>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="./madhu_sv.jpeg" alt="MADHU" class="about-img">
+            </div>
+            <div class="about-text">
+                <p>
+                    I am a dedicated software engineer with a passion for creating innovative solutions that make a difference. 
+                    My journey in technology began with curiosity about how digital systems work, which evolved into a deep 
+                    appreciation for clean code, scalable architecture, and user-centered design.
+                </p>
+                <p>
+                    With expertise spanning multiple programming languages and frameworks, I thrive in collaborative environments 
+                    where I can contribute to meaningful projects. I believe in continuous learning and staying up-to-date with 
+                    the latest industry trends and best practices.
+                </p>
+                <p>
+                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
+                    or sharing knowledge with the developer community. I'm always excited about the next challenge and 
+                    opportunity to grow.
+                </p>
+                
+            </div>
+            
+        </div>
+    </section>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">
+                A comprehensive overview of the technologies and tools I work with
+            </p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category card">
+                <div class="card__body">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">TypeScript</span>
+                    </div>
+                </div>
+            </div>
+			<div class="skill-category card">
+                <div class="card__body">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skill-category card">
+                <div class="card__body">
+                    <h3>Backend Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">GraphQL</span>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-category card">
+                <div class="card__body">
+                    <h3>Database & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">
+                A showcase of my recent work and personal projects
+            </p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card card">
+                <div class="project-image">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="card__body">
+                    <h3 class="project-title">E-Commerce Platform</h3>
+                    <p class="project-description">
+                        A full-stack e-commerce solution with user authentication, product management, 
+                        shopping cart functionality, and payment integration.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Stripe</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card card">
+                <div class="project-image">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="card__body">
+                    <h3 class="project-title">Task Management App</h3>
+                    <p class="project-description">
+                        A collaborative task management application with real-time updates, 
+                        team collaboration features, and progress tracking.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Socket.io</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card card">
+                <div class="project-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="card__body">
+                    <h3 class="project-title">Analytics Dashboard</h3>
+                    <p class="project-description">
+                        A data visualization dashboard with interactive charts, real-time metrics, 
+                        and customizable reporting features for business intelligence.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">D3.js</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card card">
+                <div class="project-image">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="card__body">
+                    <h3 class="project-title">Social Media App</h3>
+                    <p class="project-description">
+                        A full-featured social media platform with user profiles, posts, real-time messaging, 
+                        and content sharing capabilities.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Socket.io</span>
+                        <span class="tech-tag">AWS</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card card">
+                <div class="project-image">
+                    <i class="fas fa-cloud-sun"></i>
+                </div>
+                <div class="card__body">
+                    <h3 class="project-title">Weather Forecast App</h3>
+                    <p class="project-description">
+                        A responsive weather application with location-based forecasts, interactive maps, 
+                        and detailed weather analytics.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Vue.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">Weather API</span>
+                        <span class="tech-tag">Leaflet</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card card">
+                <div class="project-image">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="card__body">
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p class="project-description">
+                        A modern, responsive portfolio website with animated elements, dark/light themes, 
+                        and optimized performance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Animations</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            Live Demo
+                        </a>
+                        <a href="#" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Explore More Projects Section -->
+        <div class="explore-more">
+            <a href="https://github.com" class="btn btn--primary btn--lg" target="_blank">
+                <i class="fab fa-github"></i>
+                Explore More Projects
+            </a>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Have a question or want to work together? I'd love to hear from you
+            </p>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Address</h4>
+                        <p>India</p>
+                    </div>
+                </div>
+                <div class="contact-item card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Phone</h4>
+                        <p>+91 99999999999999</p>
+                    </div>
+                </div>
+				
+                <div class="contact-item card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/</p>
+                    </div>
+                </div>
+				
+				<div class="contact-item card">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h4>GitHub</h4>
+                        <p>https://github.com/</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-container card">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your full name" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+                        <div class="error-message"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Tell me about your project or how we can work together..." required></textarea>
+                        <div class="error-message"></div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                    <div id="formMessage" class="form-message hidden"></div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+            <div>
+                    <a href="#" class="btn btn--primary btn--outline" target="_blank">
+                        <i class="fas fa-download"></i>
+                         Resume
+                    </a>
+            </div>
+
+            <a href="https://github.com/" class="social-link" title="GitHub" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/" class="social-link" title="LinkedIn" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://Twitter.com/in/" class="social-link" title="Twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="mailto:gmail.com" class="social-link" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 MADHU . All rights reserved.</p>
+            <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+</body>
+</html>
