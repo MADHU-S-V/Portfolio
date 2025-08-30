@@ -1,470 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MADHU S V</title>
+    <title>Your Name | Professional Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter & Raleway for a professional combination -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="grok-bg.css">
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-    <!-- JavaScript -->
-    <script src="app.js" defer></script>
-    <script src="grok-bg.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7faff;
+            color: #1a202c;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .dark body {
+            background-color: #0b0c10;
+            color: #e2e8f0;
+        }
+        h1, h2, h3 {
+            font-family: 'Raleway', sans-serif;
+        }
+        .section-padding {
+            padding: 8rem 2rem;
+        }
+        .hero-background {
+            background-image: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('https://placehold.co/1920x1080/2f3e4e/c0d6e6?text=Code+%26+Creativity');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        /* Custom scroll-based animation for sections */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Card hover effect */
+        .card-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* Button hover effect */
+        .btn-effect {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-effect:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- Project Section Styles --- */
+        .project {
+            padding-block: var(--section-padding);
+        }
+        .project-list > li {
+            margin-bottom: 25px;
+        }
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 2px 4px 6px hsla(0, 0%, 0%, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .project-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: hsla(0, 0%, 0%, 0.3);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:is(:hover, :focus)::after {
+            opacity: 1;
+        }
+        .project-card .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 10;
+        }
+        .project-card :is(.card-title, .publish-date) {
+            background: #fff;
+            color: #1a202c;
+            padding: 6px 12px;
+            width: max-content;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .dark .project-card :is(.card-title, .publish-date) {
+            background: #1a202c;
+            color: #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .project-card .publish-date {
+            font-size: 0.875rem;
+            color: #4299e1;
+            transition-delay: 0s;
+        }
+        .project-card:is(:hover, :focus) :is(.card-title, .publish-date) {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .project-card:is(:hover, :focus) .publish-date {
+            transition-delay: 0.1s;
+        }
+    </style>
 </head>
-<body data-color-scheme="black" style="font-family: 'Times New Roman', Times, serif; font-weight: bold;">
-    <!-- Header -->
-        <header class="header" data-header>
-            <div class="container" style="max-width: 1200px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; font-size: 1rem; padding: 0 32px; box-sizing: border-box;">
-                <h1 class="h1 logo" style="margin: 0;">
-                    <a href="#home" class="brand-link">MADHU<span style="color:#3b82f6;">.</span></a>
-                </h1>
-                <nav class="navbar" id="mobileNavOverlay" style="flex: 1;">
-                    <ul class="navbar-list" style="display: flex; gap: 32px; list-style: none; padding: 0; margin: 0; justify-content: center; align-items: center;">
-                        <li><a href="#home" class="navbar-link active">Home</a></li>
-                        <li><a href="#about" class="navbar-link">About</a></li>
-                        <li><a href="#skills" class="navbar-link">Skills</a></li>
-                        <li><a href="#projects" class="navbar-link">Projects</a></li>
-                        <li><a href="#contact" class="navbar-link">Contact</a></li>
-                    </ul>
-                </nav>
-                <div class="navbar-actions" style="margin-left: 32px;">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <i class="fas fa-sun"></i>
-                    </button>
-                </div>
-            </div>
-            </div>
-        </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Hi, I'm MADHU</h1>
-            <p class="hero-subtitle">Software Engineer</p>
-            <p class="hero-description">
-                Passionate about building robust and scalable applications that solve real-world problems. 
-                 I specialize in full-stack development with a focus on modern technologies and best practices.
-            </p>
-            
-            <div class="hero-buttons">
-                <a href="#projects" class="btn btn--primary">
-                    <i class="fas fa-code"></i>
-                    View My Work
-                </a>
-                <a href="#contact" class="btn btn--outline">
-                    <i class="fas fa-envelope"></i>
-                    Get In Touch
-                </a>
-                
-            </div>   
-        </div>
-        <div class="hero-image">
-            <div class="profile-image-circle">
-                <img src="./madhu_sv.jpeg" alt="MADHU" class="profile-img">
-            </div>
-        </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="section-header">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">
-                Learn more about my journey, experience, and what drives me as a software engineer.
-            </p>
-        </div>
-        <div class="about-content">
-            <div class="about-image">
-                <img src="./madhu_sv.jpeg" alt="MADHU" class="about-img">
-            </div>
-            <div class="about-text">
-                <p>
-                    I am a dedicated software engineer with a passion for creating innovative solutions that make a difference. 
-                    My journey in technology began with curiosity about how digital systems work, which evolved into a deep 
-                    appreciation for clean code, scalable architecture, and user-centered design.
-                </p>
-                <p>
-                    With expertise spanning multiple programming languages and frameworks, I thrive in collaborative environments 
-                    where I can contribute to meaningful projects. I believe in continuous learning and staying up-to-date with 
-                    the latest industry trends and best practices.
-                </p>
-                <p>
-                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-                    or sharing knowledge with the developer community. I'm always excited about the next challenge and 
-                    opportunity to grow.
-                </p>
-                
-            </div>
-            
-        </div>
-    </section>
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <p class="section-subtitle">
-                A comprehensive overview of the technologies and tools I work with
-            </p>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-category card">
-                <div class="card__body">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">TypeScript</span>
-                    </div>
-                </div>
-            </div>
-			<div class="skill-category card">
-                <div class="card__body">
-                    <h3>Frontend Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">React.js</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="skill-category card">
-                <div class="card__body">
-                    <h3>Backend Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express.js</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">GraphQL</span>
-                    </div>
-                </div>
-            </div>
-            <div class="skill-category card">
-                <div class="card__body">
-                    <h3>Database & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">AWS</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">
-                A showcase of my recent work and personal projects
-            </p>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card card">
-                <div class="project-image">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-                <div class="card__body">
-                    <h3 class="project-title">E-Commerce Platform</h3>
-                    <p class="project-description">
-                        A full-stack e-commerce solution with user authentication, product management, 
-                        shopping cart functionality, and payment integration.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Stripe</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card">
-                <div class="project-image">
-                    <i class="fas fa-tasks"></i>
-                </div>
-                <div class="card__body">
-                    <h3 class="project-title">Task Management App</h3>
-                    <p class="project-description">
-                        A collaborative task management application with real-time updates, 
-                        team collaboration features, and progress tracking.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Next.js</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Socket.io</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card">
-                <div class="project-image">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="card__body">
-                    <h3 class="project-title">Analytics Dashboard</h3>
-                    <p class="project-description">
-                        A data visualization dashboard with interactive charts, real-time metrics, 
-                        and customizable reporting features for business intelligence.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Redis</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card">
-                <div class="project-image">
-                    <i class="fas fa-users"></i>
-                </div>
-                <div class="card__body">
-                    <h3 class="project-title">Social Media App</h3>
-                    <p class="project-description">
-                        A full-featured social media platform with user profiles, posts, real-time messaging, 
-                        and content sharing capabilities.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Socket.io</span>
-                        <span class="tech-tag">AWS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card">
-                <div class="project-image">
-                    <i class="fas fa-cloud-sun"></i>
-                </div>
-                <div class="card__body">
-                    <h3 class="project-title">Weather Forecast App</h3>
-                    <p class="project-description">
-                        A responsive weather application with location-based forecasts, interactive maps, 
-                        and detailed weather analytics.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">Express.js</span>
-                        <span class="tech-tag">Weather API</span>
-                        <span class="tech-tag">Leaflet</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card card">
-                <div class="project-image">
-                    <i class="fas fa-globe"></i>
-                </div>
-                <div class="card__body">
-                    <h3 class="project-title">Portfolio Website</h3>
-                    <p class="project-description">
-                        A modern, responsive portfolio website with animated elements, dark/light themes, 
-                        and optimized performance.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Animations</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i>
-                            GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Explore More Projects Section -->
-        <div class="explore-more">
-            <a href="https://github.com" class="btn btn--primary btn--lg" target="_blank">
-                <i class="fab fa-github"></i>
-                Explore More Projects
+<body class="bg-[#f7faff] text-[#1a202c] transition-colors duration-400 dark:bg-[#0b0c10] dark:text-[#e2e8f0]">
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#f7faff] bg-opacity-80 backdrop-blur-md transition-colors duration-400 dark:bg-[#0b0c10] dark:bg-opacity-80 shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold rounded-lg p-2 transition-colors hover:text-[#4299e1] dark:hover:text-[#63b3ed]">
+                Your Name
             </a>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">
-                Have a question or want to work together? I'd love to hear from you
-            </p>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item card">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Address</h4>
-                        <p>India</p>
-                    </div>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex flex-grow justify-center items-center space-x-8">
+                <a href="#hero" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">About</a>
+                <a href="#skills" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Skills</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Contact</a>
+            </div>
+            <!-- Theme Toggle & Mobile Menu Button -->
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" class="text-gray-800 p-2 rounded-full hover:bg-gray-200 transition-colors dark:text-gray-200 dark:hover:bg-gray-700">
+                    <i id="theme-icon" class="fas fa-moon text-xl"></i>
+                </button>
+                <button id="mobile-menu-button" aria-label="Open Mobile Menu" class="md:hidden text-gray-800 focus:outline-none p-2 rounded-md hover:bg-gray-200 transition-colors dark:text-gray-200 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-[#f7faff] bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 p-8 transition-all duration-300 dark:bg-[#0b0c10] dark:bg-opacity-95">
+        <button id="close-menu" aria-label="Close Mobile Menu" class="absolute top-6 right-6 text-gray-800 text-3xl hover:text-[#4299e1] dark:text-gray-200 dark:hover:text-[#63b3ed]">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#hero" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Home</a>
+        <a href="#about" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">About</a>
+        <a href="#skills" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Skills</a>
+        <a href="#portfolio" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Projects</a>
+        <a href="#contact" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Contact</a>
+    </div>
+
+    <main class="pt-[76px]">
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-white hero-background px-4">
+            <div class="relative z-10 text-center max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <!-- Image Container (placed first in HTML for mobile, then ordered to the right on desktop) -->
+                <div class="md:order-last flex justify-center">
+                    <img src="https://placehold.co/500x500/2a3642/c8d5e0?text=Your+Photo" alt="Professional headshot of Your Name" class="rounded-full shadow-2xl w-full max-w-sm h-auto object-cover card-hover">
                 </div>
-                <div class="contact-item card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Email</h4>
-                        <p>gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-item card">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Phone</h4>
-                        <p>+91 99999999999999</p>
-                    </div>
-                </div>
-				
-                <div class="contact-item card">
-                    <div class="contact-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>LinkedIn</h4>
-                        <p>linkedin.com/in/</p>
-                    </div>
-                </div>
-				
-				<div class="contact-item card">
-                    <div class="contact-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>GitHub</h4>
-                        <p>https://github.com/</p>
+                <!-- Text Content Container (placed second in HTML, then ordered to the left on desktop) -->
+                <div class="md:order-first flex flex-col items-center md:items-start space-y-4 text-center md:text-left pt-12 md:pt-0">
+                    <p class="text-xl text-[#84a3b8] dark:text-[#b4d2e2] font-semibold">Hello, I'm</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight drop-shadow-lg">
+                        Your Name
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-[#84a3b8] dark:text-[#b4d2e2]">
+                        A Passionate Software Engineer
+                    </h2>
+                    <p class="text-lg sm:text-xl lg:text-2xl font-light max-w-2xl opacity-90 drop-shadow-md">
+                        I specialize in crafting elegant and robust web applications with a focus on user-centric design and performance.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center pt-4 space-y-4 sm:space-y-0 sm:space-x-6">
+                        <a href="#portfolio" class="bg-[#4299e1] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                            Explore My Work
+                        </a>
+                        <a href="#contact" class="bg-transparent border border-white text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-[#1a202c] transition-colors btn-effect">
+                            Get In Touch
+                        </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="contact-form-container card">
-                <form id="contactForm" class="contact-form">
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your full name" required>
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required>
-                        <div class="error-message"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" class="form-control" rows="4" placeholder="Tell me about your project or how we can work together..." required></textarea>
-                        <div class="error-message"></div>
-                    </div>
-                    <button type="submit" class="btn btn--primary btn--full-width">
-                        <i class="fas fa-paper-plane"></i>
-                        Send Message
-                    </button>
-                    <div id="formMessage" class="form-message hidden"></div>
-                </form>
-            </div>
-        </div>
-        
-        <!-- Social Links -->
-        <div class="social-links">
-            <div>
-                    <a href="#" class="btn btn--primary btn--outline" target="_blank">
-                        <i class="fas fa-download"></i>
-                         Resume
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-white dark:bg-[#111218] fade-in-up">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/400x400/2a3642/c8d5e0?text=Your+Photo" alt="Professional headshot of Your Name" class="rounded-3xl shadow-2xl w-full max-w-sm mx-auto h-auto card-hover">
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 dark:text-gray-100">About Me</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed dark:text-gray-300">
+                        I am a dedicated and results-driven [Your Profession] with over [Number] years of experience in [Your Industry]. My work is characterized by a strong emphasis on clean code, user-centric design, and scalable architecture. I am passionate about [Your Passion, e.g., open-source technology, solving complex problems]. In my free time, you can find me [Your Hobbies, e.g., contributing to community projects, reading about new technologies, or enjoying nature].
+                    </p>
+                    <a href="your_resume.pdf" class="mt-8 inline-block bg-[#4299e1] text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect" download>
+                        Download Resume
                     </a>
+                </div>
             </div>
+        </section>
 
-            <a href="https://github.com/" class="social-link" title="GitHub" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com/in/" class="social-link" title="LinkedIn" target="_blank">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="https://Twitter.com/in/" class="social-link" title="Twitter" target="_blank">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="mailto:gmail.com" class="social-link" title="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-    </section>
+        <!-- Skills Section -->
+        <section id="skills" class="section-padding bg-[#f0f3f9] dark:bg-[#171923] fade-in-up">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 dark:text-gray-100">My Skills</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+                    <!-- TIP: Use this structure to list your skills. Each item should be a core technology or competency. -->
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-html5 text-4xl mb-4 text-[#e34c26]"></i>
+                        <h3 class="font-semibold text-lg">HTML5</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-css3-alt text-4xl mb-4 text-[#264de4]"></i>
+                        <h3 class="font-semibold text-lg">CSS3</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-js-square text-4xl mb-4 text-[#f7df1e]"></i>
+                        <h3 class="font-semibold text-lg">JavaScript</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-react text-4xl mb-4 text-[#61dafb]"></i>
+                        <h3 class="font-semibold text-lg">React</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-node-js text-4xl mb-4 text-[#68a063]"></i>
+                        <h3 class="font-semibold text-lg">Node.js</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fas fa-database text-4xl mb-4 text-[#4a90e2]"></i>
+                        <h3 class="font-semibold text-lg">SQL/NoSQL</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-python text-4xl mb-4 text-[#3776ab]"></i>
+                        <h3 class="font-semibold text-lg">Python</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fas fa-cloud-upload-alt text-4xl mb-4 text-[#ff9900]"></i>
+                        <h3 class="font-semibold text-lg">Cloud Computing</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projects Section -->
+        <section class="project fade-in-up" id="portfolio">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="project-content section-content text-center mb-12">
+                    <p class="section-subtitle text-lg text-gray-600 dark:text-gray-400">My Works</p>
+                    <h2 class="h3 section-title text-3xl sm:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100">
+                        Check Out My Latest Projects
+                    </h2>
+                    <p class="section-text text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                        I create modern, user-friendly, and performant applications that solve real-world problems. Each project reflects my dedication to clean code and intuitive design.
+                    </p>
+                </div>
+                <!-- Projects that are visible by default -->
+                <ul id="project-list-visible" class="project-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+Dashboard+App" class="w-full" alt="A dashboard application.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">Project Dashboard</h3>
+                                <time class="publish-date" datetime="2024-08">August 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Task+Management+App" class="w-full" alt="A task management application.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">Task Management</h3>
+                                <time class="publish-date" datetime="2024-07">July 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=E-commerce+Platform" class="w-full" alt="An e-commerce platform.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">E-commerce Platform</h3>
+                                <time class="publish-date" datetime="2024-06">June 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Projects that are initially hidden -->
+                <ul id="project-list-hidden" class="project-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Social+Media+Clone" class="w-full" alt="A social media clone.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">Social Media Clone</h3>
+                                <time class="publish-date" datetime="2024-05">May 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Code+Editor" class="w-full" alt="A code editor application.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">In-Browser Code Editor</h3>
+                                <time class="publish-date" datetime="2024-04">April 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Simple+Game" class="w-full" alt="A simple game.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">A Simple Browser Game</h3>
+                                <time class="publish-date" datetime="2024-03">March 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="text-center mt-8">
+                    <button id="show-more-button" class="bg-[#4299e1] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                        <i class="fas fa-arrow-down mr-2"></i> Show More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-[#f0f3f9] dark:bg-[#171923] fade-in-up">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12 dark:text-gray-100">Get in Touch</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <!-- Contact Info and Social Links -->
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">Let's Connect</h3>
+                        <p class="text-lg text-gray-700 mb-6 dark:text-gray-300">
+                            I'm currently open to new opportunities. Feel free to reach out via the form or my social profiles.
+                        </p>
+                        <div class="space-y-4 text-gray-700 dark:text-gray-300">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
+                                <span>your.email@example.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone-alt text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
+                                <span>+1 (123) 456-7890</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
+                                <span>123 Professional Way, Suite 456, City, State 12345</span>
+                            </div>
+                        </div>
+                        <div class="flex space-x-6 mt-8 text-2xl">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-400 dark:hover:text-blue-400" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors dark:text-gray-400 dark:hover:text-gray-100" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-400 dark:hover:text-blue-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="w-full">
+                        <form id="contact-form" class="space-y-6">
+                            <input type="text" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required
+                                class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
+                            <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Your Email" required
+                                class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-label="Your Message" required
+                                class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500"></textarea>
+                            <button type="submit" class="w-full bg-[#4299e1] text-white font-semibold py-3 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                                Send Message
+                            </button>
+                            <div id="status-message" role="alert" class="hidden text-center mt-4 p-4 rounded-lg border"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 MADHU . All rights reserved.</p>
-            <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
+    <footer class="bg-white text-gray-600 py-8 text-center transition-colors duration-400 dark:bg-[#111218] dark:text-gray-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top" class="fixed bottom-6 right-6 p-4 bg-[#4299e1] text-white rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-[#3182ce]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- Core JavaScript for Theme Toggle, Mobile Menu, and Animations ---
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const isSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+        const savedTheme = localStorage.getItem('theme');
+
+        function setInitialTheme() {
+            if (savedTheme === 'dark' || (!savedTheme && isSystemDarkMode.matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+        setInitialTheme();
+
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Back to Top Button Logic
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.pointerEvents = 'auto';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.pointerEvents = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for fade-in-up animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Project Section - "Show More" functionality
+        const showMoreButton = document.getElementById('show-more-button');
+        const hiddenProjects = document.getElementById('project-list-hidden');
+
+        showMoreButton.addEventListener('click', () => {
+            hiddenProjects.classList.remove('hidden');
+            showMoreButton.style.display = 'none';
+        });
+
+
+        // Contact form submission handler (does not send data, only shows a message)
+        const contactForm = document.getElementById('contact-form');
+        const statusMessage = document.getElementById('status-message');
+
+        const showMessage = (message, isSuccess) => {
+            statusMessage.textContent = message;
+            statusMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'border-green-300', 'bg-red-100', 'text-red-800', 'border-red-300');
+            
+            if (isSuccess) {
+                statusMessage.classList.add('bg-green-100', 'text-green-800', 'border-green-300');
+            } else {
+                statusMessage.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+            }
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                statusMessage.classList.add('hidden');
+            }, 5000);
+        };
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name === '' || email === '' || message === '') {
+                showMessage('Please fill in all fields.', false);
+            } else if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', false);
+            } else {
+                // In a real-world scenario, you would send this data to a backend server.
+                showMessage('Message sent successfully! Thank you for your interest.', true);
+                contactForm.reset();
+            }
+        });
+    </script>
 </body>
 </html>
