@@ -3,13 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MADHU S V - Software Engineer</title>
+    <title>MADHU S V</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7faff;
+            color: #1a202c;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .dark body {
+            background-color: #0b0c10;
+            color: #e2e8f0;
+        }
+        h1, h2, h3 {
+            font-family: 'Raleway', sans-serif;
+        }
+        .section-padding {
+            padding: 8rem 2rem;
+        }
+        .hero-background {
+            /* The new banner image URL */
+            background-image: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.8)), url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?fit=crop&w=1920&q=80');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        /* Custom scroll-based animation for sections */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Card hover effect */
+        .card-hover {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* Button hover effect */
+        .btn-effect {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn-effect:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- Project Section Styles --- */
+        .project {
+            padding-block: var(--section-padding);
+        }
+        .project-list > li {
+            margin-bottom: 25px;
+        }
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 2px 4px 6px hsla(0, 0%, 0%, 0.2);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .project-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: hsla(0, 0%, 0%, 0.3);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:is(:hover, :focus)::after {
+            opacity: 1;
+        }
+        .project-card .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 10;
+        }
+        .project-card :is(.card-title, .publish-date) {
+            background: #fff;
+            color: #1a202c;
+            padding: 6px 12px;
+            width: max-content;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .dark .project-card :is(.card-title, .publish-date) {
+            background: #1a202c;
+            color: #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .project-card .publish-date {
+            font-size: 0.875rem;
+            color: #4299e1;
+            transition-delay: 0s;
+        }
+        .project-card:is(:hover, :focus) :is(.card-title, .publish-date) {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .project-card:is(:hover, :focus) .publish-date {
+            transition-delay: 0.1s;
+        }
+    </style>
 </head>
 <body class="bg-[#f7faff] text-[#1a202c] transition-colors duration-400 dark:bg-[#0b0c10] dark:text-[#e2e8f0]">
     <header class="fixed top-0 left-0 right-0 z-50 bg-[#f7faff] bg-opacity-80 backdrop-blur-md transition-colors duration-400 dark:bg-[#0b0c10] dark:bg-opacity-80 shadow-md">
@@ -18,11 +137,11 @@
                 Madhu S V
             </a>
             <div class="hidden md:flex flex-grow justify-center items-center space-x-8">
-                <a href="#hero" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Home</a>
-                <a href="#about" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">About</a>
-                <a href="#skills" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Skills</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Projects</a>
-                <a href="#contact" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Contact</a>
+                <a href="#hero" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Home.</a>
+                <a href="#about" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">About.</a>
+                <a href="#skills" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Skills.</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Projects.</a>
+                <a href="#contact" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Contact.</a>
             </div>
             <div class="flex items-center space-x-4">
                 <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" class="text-gray-800 p-2 rounded-full hover:bg-gray-200 transition-colors dark:text-gray-200 dark:hover:bg-gray-700">
@@ -48,15 +167,18 @@
 
     <main class="pt-[76px]">
         <section id="hero" class="relative min-h-screen flex items-center justify-center text-white hero-background px-4">
-            <div id="starsContainer" class="absolute top-0 left-0 w-full h-full"></div>
             <div class="relative z-10 text-center max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">
                 <div class="md:order-last flex justify-center">
-                    <img src="madhu_sv.jpeg" alt="Headshot of Madhu S V" class="rounded-full shadow-2xl w-full max-w-sm h-auto object-cover card-hover">
+                    <img src="madhu_sv.jpeg" alt="Professional headshot of MADHU S V" class="rounded-full shadow-2xl w-full max-w-sm h-auto object-cover card-hover">
                 </div>
                 <div class="md:order-first flex flex-col items-center md:items-start space-y-4 text-center md:text-left pt-12 md:pt-0">
                     <p class="text-xl text-[#84a3b8] dark:text-[#b4d2e2] font-semibold">Hello, I'm</p>
-                    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight drop-shadow-lg">MADHU S V</h1>
-                    <h2 class="text-2xl sm:text-3xl font-semibold text-[#84a3b8] dark:text-[#b4d2e2]">A Passionate Software Engineer</h2>
+                    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight drop-shadow-lg">
+                        MADHU S V
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-[#84a3b8] dark:text-[#b4d2e2]">
+                        A Passionate Software Engineer
+                    </h2>
                     <p class="text-lg sm:text-xl lg:text-2xl font-light max-w-2xl opacity-90 drop-shadow-md">
                         I specialize in crafting elegant and robust web applications with a focus on user-centric design and performance.
                     </p>
@@ -75,14 +197,14 @@
         <section id="about" class="section-padding bg-white dark:bg-[#111218] fade-in-up">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2">
-                    <img src="madhu_sv.jpeg" alt="A professional headshot of Madhu S V" class="rounded-3xl shadow-2xl w-full max-w-sm mx-auto h-auto card-hover">
+                    <img src="madhu_sv.jpeg" alt="Professional headshot MADHU S V" class="rounded-3xl shadow-2xl w-full max-w-sm mx-auto h-auto card-hover">
                 </div>
                 <div class="md:w-1/2 text-center md:text-left">
                     <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 dark:text-gray-100">About Me</h2>
                     <p class="text-lg text-gray-700 leading-relaxed dark:text-gray-300">
-                        I am a dedicated and results-driven Software Engineer with a passion for developing innovative and efficient solutions. My work is characterized by a strong emphasis on clean code, user-centric design, and scalable architecture. I am passionate about open-source technology and solving complex problems. In my free time, you can find me contributing to community projects, reading about new technologies, or enjoying nature.
+                        I am a dedicated and results-driven [Your Profession] with over [Number] years of experience in [Your Industry]. My work is characterized by a strong emphasis on clean code, user-centric design, and scalable architecture. I am passionate about [Your Passion, e.g., open-source technology, solving complex problems]. In my free time, you can find me [Your Hobbies, e.g., contributing to community projects, reading about new technologies, or enjoying nature].
                     </p>
-                    <a href="resume.pdf" class="mt-8 inline-block bg-[#4299e1] text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect" download>
+                    <a href="your_resume.pdf" class="mt-8 inline-block bg-[#4299e1] text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect" download>
                         Download Resume
                     </a>
                 </div>
@@ -132,16 +254,19 @@
         <section class="project fade-in-up" id="portfolio">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="project-content section-content text-center mb-12">
-                    <h2 class="h3 section-title text-3xl sm:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100">My Projects</h2>
+                    <p class="section-subtitle text-lg text-gray-600 dark:text-gray-400">My Works</p>
+                    <h2 class="h3 section-title text-3xl sm:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100">
+                        Check Out My Latest Projects
+                    </h2>
                     <p class="section-text text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-                        Here are some of the projects I've worked on. Each project reflects my dedication to clean code and intuitive design.
+                        I create modern, user-friendly, and performant applications that solve real-world problems. Each project reflects my dedication to clean code and intuitive design.
                     </p>
                 </div>
                 <ul id="project-list-visible" class="project-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <li>
                         <a href="#" class="project-card">
                             <figure class="card-banner">
-                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+1" class="w-full" alt="Screenshot of Project Dashboard App">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+Dashboard+App" class="w-full" alt="A dashboard application.">
                             </figure>
                             <div class="card-content">
                                 <h3 class="card-title">Project Dashboard</h3>
@@ -152,7 +277,7 @@
                     <li>
                         <a href="#" class="project-card">
                             <figure class="card-banner">
-                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+2" class="w-full" alt="Screenshot of Task Management App">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Task+Management+App" class="w-full" alt="A task management application.">
                             </figure>
                             <div class="card-content">
                                 <h3 class="card-title">Task Management</h3>
@@ -163,7 +288,7 @@
                     <li>
                         <a href="#" class="project-card">
                             <figure class="card-banner">
-                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+3" class="w-full" alt="Screenshot of E-commerce Platform">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=E-commerce+Platform" class="w-full" alt="An e-commerce platform.">
                             </figure>
                             <div class="card-content">
                                 <h3 class="card-title">E-commerce Platform</h3>
@@ -173,9 +298,42 @@
                     </li>
                 </ul>
                 <ul id="project-list-hidden" class="project-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
-                    </ul>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Social+Media+Clone" class="w-full" alt="A social media clone.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">Social Media Clone</h3>
+                                <time class="publish-date" datetime="2024-05">May 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Code+Editor" class="w-full" alt="A code editor application.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">In-Browser Code Editor</h3>
+                                <time class="publish-date" datetime="2024-04">April 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Simple+Game" class="w-full" alt="A simple game.">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">A Simple Browser Game</h3>
+                                <time class="publish-date" datetime="2024-03">March 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
                 <div class="text-center mt-8">
-                    <button id="show-more-button" aria-expanded="false" class="bg-[#4299e1] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                    <button id="show-more-button" class="bg-[#4299e1] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
                         <i class="fas fa-arrow-down mr-2"></i> Show More
                     </button>
                 </div>
@@ -194,29 +352,32 @@
                         <div class="space-y-4 text-gray-700 dark:text-gray-300">
                             <div class="flex items-center space-x-3">
                                 <i class="fas fa-envelope text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
-                                <span>madhu.sv@email.com</span>
+                                <span>your.email@example.com</span>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <i class="fas fa-phone-alt text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
-                                <span>+91 12345 67890</span>
+                                <span>+1 (123) 456-7890</span>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <i class="fas fa-map-marker-alt text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
-                                <span>Bengaluru, India</span>
+                                <span>123 Professional Way, Suite 456, City, State 12345</span>
                             </div>
                         </div>
                         <div class="flex space-x-6 mt-8 text-2xl">
-                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-400 dark:hover:text-blue-400" aria-label="My LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors dark:text-gray-400 dark:hover:text-gray-100" aria-label="My GitHub Profile"><i class="fab fa-github"></i></a>
-                            <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-400 dark:hover:text-blue-300" aria-label="My Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-400 dark:hover:text-blue-400" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors dark:text-gray-400 dark:hover:text-gray-100" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-400 dark:hover:text-blue-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
 
                     <div class="w-full">
                         <form id="contact-form" class="space-y-6">
-                            <input type="text" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
-                            <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Your Email" required class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-label="Your Message" required class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500"></textarea>
+                            <input type="text" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required
+                                class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
+                            <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Your Email" required
+                                class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-label="Your Message" required
+                                class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500"></textarea>
                             <button type="submit" class="w-full bg-[#4299e1] text-white font-semibold py-3 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
                                 Send Message
                             </button>
@@ -230,7 +391,7 @@
 
     <footer class="bg-white text-gray-600 py-8 text-center transition-colors duration-400 dark:bg-[#111218] dark:text-gray-400">
         <div class="max-w-7xl mx-auto px-4">
-            <p>&copy; 2025 MADHU S V. All rights reserved.</p>
+            <p>&copy; 2024 MADHU S V. All rights reserved.</p>
         </div>
     </footer>
 
@@ -238,6 +399,151 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="app.js"></script>
+    <script>
+        // --- Core JavaScript for Theme Toggle, Mobile Menu, and Animations ---
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const isSystemDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+        const savedTheme = localStorage.getItem('theme');
+
+        function setInitialTheme() {
+            if (savedTheme === 'dark' || (!savedTheme && isSystemDarkMode.matches)) {
+                document.documentElement.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        }
+        setInitialTheme();
+
+        themeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // Mobile Menu Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Back to Top Button Logic
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.pointerEvents = 'auto';
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.pointerEvents = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Intersection Observer for fade-in-up animations
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Project Section - "Show More" functionality
+        const showMoreButton = document.getElementById('show-more-button');
+        const hiddenProjects = document.getElementById('project-list-hidden');
+
+        showMoreButton.addEventListener('click', () => {
+            hiddenProjects.classList.remove('hidden');
+            showMoreButton.style.display = 'none';
+        });
+
+
+        // Contact form submission handler (does not send data, only shows a message)
+        const contactForm = document.getElementById('contact-form');
+        const statusMessage = document.getElementById('status-message');
+
+        const showMessage = (message, isSuccess) => {
+            statusMessage.textContent = message;
+            statusMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'border-green-300', 'bg-red-100', 'text-red-800', 'border-red-300');
+
+            if (isSuccess) {
+                statusMessage.classList.add('bg-green-100', 'text-green-800', 'border-green-300');
+            } else {
+                statusMessage.classList.add('bg-red-100', 'text-red-800', 'border-red-300');
+            }
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                statusMessage.classList.add('hidden');
+            }, 5000);
+        };
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (name === '' || email === '' || message === '') {
+                showMessage('Please fill in all fields.', false);
+            } else if (!emailRegex.test(email)) {
+                showMessage('Please enter a valid email address.', false);
+            } else {
+                // In a real-world scenario, you would send this data to a backend server.
+                showMessage('Message sent successfully! Thank you for your interest.', true);
+                contactForm.reset();
+            }
+        });
+    </script>
 </body>
 </html>
