@@ -1,49 +1,243 @@
-/* Basic Reset and Variables (Optional, but good practice) */
+/* X.com Theme Variables */
 :root {
-    --primary-color: #007bff; /* Bootstrap primary blue */
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* X.com Color Palette */
+  --x-dark-bg: #15202b;
+  --x-card-bg: #192734;
+  --x-darker-bg: #22303c;
+  --x-text-primary: #ffffff;
+  --x-text-secondary: #8899ac;
+  --x-accent-blue: #1d9bf0;
+  --x-black: #000000;
+  --x-white: #ffffff;
+  --x-border: rgba(56, 68, 77, 0.3);
+  --x-hover-bg: rgba(29, 155, 240, 0.1);
+
+  /* Light theme variations for X.com style */
+  --x-light-bg: #ffffff;
+  --x-light-card: #f7f9fa;
+  --x-light-text: #0f1419;
+  --x-light-secondary: #536471;
+  --x-light-border: rgba(0, 0, 0, 0.12);
+
+  /* Design System Overrides */
+  --color-background: var(--x-light-bg);
+  --color-surface: var(--x-light-card);
+  --color-text: var(--x-light-text);
+  --color-text-secondary: var(--x-light-secondary);
+  --color-primary: var(--x-accent-blue);
+  --color-primary-hover: #1a8cd8;
+  --color-primary-active: #1565c0;
+  --color-secondary: rgba(0, 0, 0, 0.03);
+  --color-secondary-hover: rgba(0, 0, 0, 0.06);
+  --color-secondary-active: rgba(0, 0, 0, 0.1);
+  --color-border: var(--x-light-border);
+  --color-btn-primary-text: var(--x-white);
+  --color-card-border: var(--x-light-border);
+  --color-card-border-inner: var(--x-light-border);
+  --color-error: #f4212e;
+  --color-success: #00ba7c;
+  --color-warning: #ffad1f;
+  --color-info: var(--x-light-secondary);
+  --color-focus-ring: rgba(29, 155, 240, 0.4);
+
+  /* Typography */
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-xl: 1.25rem;
+  --line-height-normal: 1.5;
+
+  /* Spacing */
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+
+  /* Border Radius */
+  --radius-full: 9999px;
+  --radius-lg: 0.75rem;
+
+  /* Theme-specific variables */
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --hero-bg-gradient: linear-gradient(135deg, var(--x-light-bg) 0%, var(--x-light-card) 100%);
 }
 
-/* Global Styles */
+/* Dark theme override for X.com style */
+[data-color-scheme="dark"] {
+    --color-background: var(--x-dark-bg);
+    --color-surface: var(--x-card-bg);
+    --color-text: var(--x-text-primary);
+    --color-text-secondary: var(--x-text-secondary);
+    --color-border: var(--x-border);
+    --color-card-border: var(--x-border);
+    --color-card-border-inner: var(--x-border);
+    --color-secondary: var(--x-hover-bg);
+    --color-secondary-hover: rgba(29, 155, 240, 0.2);
+    --color-secondary-active: rgba(29, 155, 240, 0.3);
+    --header-bg: rgba(21, 32, 43, 0.8);
+    --hero-bg-gradient: linear-gradient(135deg, var(--x-dark-bg) 0%, var(--x-darker-bg) 100%);
+}
+
+/* Base Styles */
+html {
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: var(--font-family);
-    line-height: 1.6;
-    background-color: #f8f9fa; /* Light gray background */
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
 }
 
-/* Navigation Bar Adjustments */
-.navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
-/* Hero Section Customization */
-#hero {
-    min-height: 80vh; /* Make the hero section take up most of the viewport height */
-    display: flex;
-    align-items: center;
-    padding-top: 100px !important;
-    padding-bottom: 100px !important;
+/* Header */
+.header {
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-/* Project Card Hover Effect */
-.card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none;
+/* Hero Section */
+.hero-background {
+    background: var(--hero-bg-gradient);
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+/* Buttons */
+.btn-effect {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-effect:hover {
+    transform: translateY(-2px);
 }
 
-/* Ensure the image in the card looks good */
-.card-img-top {
-    height: 200px; /* Uniform height for project images */
-    object-fit: cover;
+/* Cards */
+.card-hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+[data-color-scheme="dark"] .card-hover:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Utility for icons in the footer/contact */
-.bi {
-    vertical-align: -0.125em;
+/* Scroll-based animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Project Section */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: 2px 4px 6px hsla(0, 0%, 0%, 0.2);
+}
+.project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: hsla(0, 0%, 0%, 0.3);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.project-card:is(:hover, :focus)::after {
+    opacity: 1;
+}
+.project-card .card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 10;
+}
+.project-card :is(.card-title, .publish-date) {
+    background: #fff;
+    color: #1a202c;
+    padding: 6px 12px;
+    width: max-content;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+[data-color-scheme="dark"] .project-card :is(.card-title, .publish-date) {
+    background: #1a202c;
+    color: #e2e8f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.project-card .publish-date {
+    font-size: 0.875rem;
+    color: #4299e1;
+}
+.project-card:is(:hover, :focus) :is(.card-title, .publish-date) {
+    transform: translateY(0);
+    opacity: 1;
+}
+.project-card:is(:hover, :focus) .publish-date {
+    transition-delay: 0.1s;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    transition: opacity 0.3s, transform 0.3s;
+}
+#back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Starfield */
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    will-change: transform, opacity;
+}
+.star-small { width: 1px; height: 1px; }
+.star-medium { width: 2px; height: 2px; }
+.star-large { width: 3px; height: 3px; }
+.star-xlarge { width: 4px; height: 4px; }
+
+@keyframes twinkle-1 {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+@keyframes twinkle-2 {
+    0%, 100% { transform: scale(0.8); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+@keyframes twinkle-3 {
+    0%, 100% { opacity: 0.6; }
+    25% { opacity: 1; }
+    75% { opacity: 0.4; }
+}
+@keyframes twinkle-4 {
+    0% { transform: translateY(-5px); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(-5px); }
+}
+@keyframes pulse-star {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.5); }
 }
