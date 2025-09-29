@@ -1,101 +1,243 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Doe | Software Engineer Portfolio</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <title>MADHU S V - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-<body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">JD.dev</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+<body class="bg-[#f7faff] text-[#1a202c] transition-colors duration-400 dark:bg-[#0b0c10] dark:text-[#e2e8f0]">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#f7faff] bg-opacity-80 backdrop-blur-md transition-colors duration-400 dark:bg-[#0b0c10] dark:bg-opacity-80 shadow-md">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold rounded-lg p-2 transition-colors hover:text-[#4299e1] dark:hover:text-[#63b3ed]">
+                Madhu S V
+            </a>
+            <div class="hidden md:flex flex-grow justify-center items-center space-x-8">
+                <a href="#hero" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">About</a>
+                <a href="#skills" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Skills</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Projects</a>
+                <a href="#contact" class="text-gray-600 hover:text-[#4299e1] font-medium transition-colors dark:text-[#a0aec0] dark:hover:text-[#63b3ed]">Contact</a>
             </div>
-        </div>
-    </nav>
-
-    <header id="hero" class="bg-light py-5">
-        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-            <div>
-                <h1 class="display-4">Hi, I'm Jane Doe 👋</h1>
-                <p class="lead">Full-Stack Engineer | HTML5, CSS3, JS | Cloud (AWS) Enthusiast</p>
-                <a href="#projects" class="btn btn-primary btn-lg me-2">View Projects</a>
-                <a href="resume.pdf" class="btn btn-outline-secondary btn-lg" download>Download Resume</a>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" aria-label="Toggle Dark/Light Mode" class="text-gray-800 p-2 rounded-full hover:bg-gray-200 transition-colors dark:text-gray-200 dark:hover:bg-gray-700">
+                    <i id="theme-icon" class="fas fa-moon text-xl"></i>
+                </button>
+                <button id="mobile-menu-button" aria-label="Open Mobile Menu" class="md:hidden text-gray-800 focus:outline-none p-2 rounded-md hover:bg-gray-200 transition-colors dark:text-gray-200 dark:hover:bg-gray-700">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
-            <div class="mt-4 mt-md-0">
-                <img src="avatar.jpg" class="img-fluid rounded-circle shadow" alt="Jane Doe's Photo" style="width: 200px; height: 200px; object-fit: cover;">
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <section id="projects" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Featured Projects</h2>
-            <div class="row g-4">
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="card shadow-sm h-100">
-                        <img src="project-api.jpg" class="card-img-top" alt="Project Image">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Cloud-Deployed REST API</h5>
-                            <p class="card-text">A microservice built with **Node.js/Express** and **PostgreSQL** deployed on **AWS Lambda** and **RDS**. Demonstrates robust backend skills and cloud deployment expertise.</p>
-                            <div class="mt-auto">
-                                <span class="badge bg-info text-dark me-2">Backend</span>
-                                <span class="badge bg-success me-2">Cloud (AWS)</span>
-                                <span class="badge bg-warning text-dark">JS</span>
-                                <a href="http://live-demo-url" target="_blank" class="btn btn-sm btn-outline-primary mt-2 me-2">Live Demo</a>
-                                <a href="http://github-repo-url" target="_blank" class="btn btn-sm btn-outline-dark mt-2">GitHub</a>
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-[#f7faff] bg-opacity-95 backdrop-blur-md flex flex-col items-center justify-center space-y-8 p-8 transition-all duration-300 dark:bg-[#0b0c10] dark:bg-opacity-95">
+        <button id="close-menu" aria-label="Close Mobile Menu" class="absolute top-6 right-6 text-gray-800 text-3xl hover:text-[#4299e1] dark:text-gray-200 dark:hover:text-[#63b3ed]">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#hero" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Home</a>
+        <a href="#about" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">About</a>
+        <a href="#skills" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Skills</a>
+        <a href="#portfolio" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Projects</a>
+        <a href="#contact" class="mobile-nav-link text-gray-800 text-3xl font-semibold hover:text-[#4299e1] transition-colors dark:text-gray-200 dark:hover:text-[#63b3ed]">Contact</a>
+    </div>
+
+    <main class="pt-[76px]">
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-white hero-background px-4">
+            <div id="starsContainer" class="absolute top-0 left-0 w-full h-full"></div>
+            <div class="relative z-10 text-center max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">
+                <div class="md:order-last flex justify-center">
+                    <img src="madhu_sv.jpeg" alt="Headshot of Madhu S V" class="rounded-full shadow-2xl w-full max-w-sm h-auto object-cover card-hover">
+                </div>
+                <div class="md:order-first flex flex-col items-center md:items-start space-y-4 text-center md:text-left pt-12 md:pt-0">
+                    <p class="text-xl text-[#84a3b8] dark:text-[#b4d2e2] font-semibold">Hello, I'm</p>
+                    <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold leading-tight drop-shadow-lg">MADHU S V</h1>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-[#84a3b8] dark:text-[#b4d2e2]">A Passionate Software Engineer</h2>
+                    <p class="text-lg sm:text-xl lg:text-2xl font-light max-w-2xl opacity-90 drop-shadow-md">
+                        I specialize in crafting elegant and robust web applications with a focus on user-centric design and performance.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start items-center pt-4 space-y-4 sm:space-y-0 sm:space-x-6">
+                        <a href="#portfolio" class="bg-[#4299e1] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                            Explore My Work
+                        </a>
+                        <a href="#contact" class="bg-transparent border border-white text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-white hover:text-[#1a202c] transition-colors btn-effect">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding bg-white dark:bg-[#111218] fade-in-up">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="madhu_sv.jpeg" alt="A professional headshot of Madhu S V" class="rounded-3xl shadow-2xl w-full max-w-sm mx-auto h-auto card-hover">
+                </div>
+                <div class="md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 dark:text-gray-100">About Me</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed dark:text-gray-300">
+                        I am a dedicated and results-driven Software Engineer with a passion for developing innovative and efficient solutions. My work is characterized by a strong emphasis on clean code, user-centric design, and scalable architecture. I am passionate about open-source technology and solving complex problems. In my free time, you can find me contributing to community projects, reading about new technologies, or enjoying nature.
+                    </p>
+                    <a href="resume.pdf" class="mt-8 inline-block bg-[#4299e1] text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect" download>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section-padding bg-[#f0f3f9] dark:bg-[#171923] fade-in-up">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 dark:text-gray-100">My Skills</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-html5 text-4xl mb-4 text-[#e34c26]"></i>
+                        <h3 class="font-semibold text-lg">HTML5</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-css3-alt text-4xl mb-4 text-[#264de4]"></i>
+                        <h3 class="font-semibold text-lg">CSS3</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-js-square text-4xl mb-4 text-[#f7df1e]"></i>
+                        <h3 class="font-semibold text-lg">JavaScript</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-react text-4xl mb-4 text-[#61dafb]"></i>
+                        <h3 class="font-semibold text-lg">React</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-node-js text-4xl mb-4 text-[#68a063]"></i>
+                        <h3 class="font-semibold text-lg">Node.js</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fas fa-database text-4xl mb-4 text-[#4a90e2]"></i>
+                        <h3 class="font-semibold text-lg">SQL/NoSQL</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fab fa-python text-4xl mb-4 text-[#3776ab]"></i>
+                        <h3 class="font-semibold text-lg">Python</h3>
+                    </div>
+                    <div class="bg-white dark:bg-[#1a202c] p-6 rounded-xl shadow-md card-hover w-full max-w-[200px]">
+                        <i class="fas fa-cloud-upload-alt text-4xl mb-4 text-[#ff9900]"></i>
+                        <h3 class="font-semibold text-lg">Cloud Computing</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="project fade-in-up" id="portfolio">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="project-content section-content text-center mb-12">
+                    <h2 class="h3 section-title text-3xl sm:text-4xl font-bold text-gray-900 mb-4 dark:text-gray-100">My Projects</h2>
+                    <p class="section-text text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                        Here are some of the projects I've worked on. Each project reflects my dedication to clean code and intuitive design.
+                    </p>
+                </div>
+                <ul id="project-list-visible" class="project-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+1" class="w-full" alt="Screenshot of Project Dashboard App">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">Project Dashboard</h3>
+                                <time class="publish-date" datetime="2024-08">August 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+2" class="w-full" alt="Screenshot of Task Management App">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">Task Management</h3>
+                                <time class="publish-date" datetime="2024-07">July 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="project-card">
+                            <figure class="card-banner">
+                                <img src="https://placehold.co/600x400/2a3642/c8d5e0?text=Project+3" class="w-full" alt="Screenshot of E-commerce Platform">
+                            </figure>
+                            <div class="card-content">
+                                <h3 class="card-title">E-commerce Platform</h3>
+                                <time class="publish-date" datetime="2024-06">June 2024</time>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul id="project-list-hidden" class="project-list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                    </ul>
+                <div class="text-center mt-8">
+                    <button id="show-more-button" aria-expanded="false" class="bg-[#4299e1] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                        <i class="fas fa-arrow-down mr-2"></i> Show More
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding bg-[#f0f3f9] dark:bg-[#171923] fade-in-up">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-12 dark:text-gray-100">Get in Touch</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+                    <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 dark:text-gray-100">Let's Connect</h3>
+                        <p class="text-lg text-gray-700 mb-6 dark:text-gray-300">
+                            I'm currently open to new opportunities. Feel free to reach out via the form or my social profiles.
+                        </p>
+                        <div class="space-y-4 text-gray-700 dark:text-gray-300">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
+                                <span>madhu.sv@email.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone-alt text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
+                                <span>+91 12345 67890</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-xl text-[#4299e1] dark:text-[#63b3ed]"></i>
+                                <span>Bengaluru, India</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card shadow-sm h-100">
-                        <img src="project-frontend.jpg" class="card-img-top" alt="Project Image">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Responsive Design Portfolio</h5>
-                            <p class="card-text">A modern, fully responsive website built with **HTML5, CSS3, and Bootstrap**. Designed the UI/UX mockups first using **Figma** to ensure a perfect user experience.</p>
-                            <div class="mt-auto">
-                                <span class="badge bg-primary">HTML5/CSS3</span>
-                                <span class="badge bg-secondary">Bootstrap</span>
-                                <span class="badge bg-danger">Figma</span>
-                                </div>
+                        <div class="flex space-x-6 mt-8 text-2xl">
+                            <a href="#" class="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-400 dark:hover:text-blue-400" aria-label="My LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors dark:text-gray-400 dark:hover:text-gray-100" aria-label="My GitHub Profile"><i class="fab fa-github"></i></a>
+                            <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors dark:text-gray-400 dark:hover:text-blue-300" aria-label="My Twitter Profile"><i class="fab fa-twitter"></i></a>
                         </div>
                     </div>
-                </div>
 
+                    <div class="w-full">
+                        <form id="contact-form" class="space-y-6">
+                            <input type="text" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
+                            <input type="email" id="email" name="email" placeholder="Your Email" aria-label="Your Email" required class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" aria-label="Your Message" required class="w-full p-4 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#4299e1] focus:border-transparent transition-colors dark:border-gray-700 dark:bg-[#1a202c] dark:text-gray-200 dark:placeholder-gray-500"></textarea>
+                            <button type="submit" class="w-full bg-[#4299e1] text-white font-semibold py-3 rounded-full shadow-lg hover:bg-[#3182ce] transition-colors btn-effect">
+                                Send Message
+                            </button>
+                            <div id="status-message" role="alert" class="hidden text-center mt-4 p-4 rounded-lg border"></div>
+                        </form>
+                    </div>
                 </div>
-        </div>
-    </section>
+            </div>
+        </section>
+    </main>
 
-    <footer id="contact" class="bg-dark text-white text-center py-4">
-        <div class="container">
-            <p>&copy; 2025 Jane Doe. Built with HTML5, CSS3, JS & Bootstrap.</p>
-            <p>Connect: 
-                <a href="https://github.com/yourusername" target="_blank" class="text-white mx-2"><i class="bi bi-github fs-4"></i></a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" class="text-white mx-2"><i class="bi bi-linkedin fs-4"></i></a>
-            </p>
+    <footer class="bg-white text-gray-600 py-8 text-center transition-colors duration-400 dark:bg-[#111218] dark:text-gray-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2025 MADHU S V. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <button id="back-to-top" aria-label="Back to top" class="fixed bottom-6 right-6 p-4 bg-[#4299e1] text-white rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-[#3182ce]">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="app.js"></script>
 </body>
 </html>
